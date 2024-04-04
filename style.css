@@ -1,0 +1,106 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#liblib,
+.side {
+    background-color: aliceblue;
+}
+
+.buttonBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    grid-column: span 3;
+    background-color: #add8e6;
+    padding: 15px;
+}
+
+.below {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr minmax(250px, 1100px) 1fr;
+}
+
+#liblib {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 350px);
+    grid-template-rows: repeat(auto-fit, 200px);
+    justify-content: center;
+    padding-top: 25px;
+    gap: 10px;
+    background-color: #a2c0ca;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0px 10px 0 10px;
+    border-radius: 20px;
+    background-color: #f5f5dc;
+    padding: 20px 40px;
+    height: 125px;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.author {
+    font-style: italic;
+    padding-bottom: 15px;
+}
+
+.read {
+    padding-bottom: 15px;
+}
+
+.buttHolder {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.toggle,
+.kill,
+#add {
+    padding: 2px 5px;
+}
+
+#fillBox {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+}
+
+#fillThis {
+    position: fixed;
+    background-color: lightgray;
+    border: 1px solid black;
+    padding: 15px;
+    border-radius: 20px;
+    left: 50%;
+    top: 50%;
+
+    margin-left: -150px;
+    width: 300px;
+
+    margin-top: -65px;
+    height: 174px;
+}
+
+#submitIt {
+    padding: 2px 5px;
+}
+
+/* div {border: 1px solid rgb(240,180,41);} 
