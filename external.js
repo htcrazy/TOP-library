@@ -1,15 +1,56 @@
+class Book {
+    constructor(id, name, author, pages, read) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;}
+
+    makeBookDom() {
+        let book = document.createElement('div');
+        book.setAttribute('id',myLibrary[i].id);
+        book.setAttribute('class','card');
+
+        let title = document.createElement('p');
+        title.setAttribute('class','title');
+        title.innerText = myLibrary[i].name;
+
+        let author = document.createElement('p');
+        author.setAttribute('class','author');
+        author.innerText = 'by ' + myLibrary[i].author + ' (' + myLibrary[i].pages + ' pages)';
+
+        let readeth = document.createElement('p');
+        readeth.setAttribute('class','read');
+        if (myLibrary[i].read == true) {
+            readeth.innerText = 'You have read this book.';
+        } else {readeth.innerText = 'You have NOT read this book.';}
+
+        let toggle = document.createElement('button');
+        toggle.setAttribute('class','toggle');
+        toggle.innerText = 'Toggle: Read/Unread';
+
+        let remove = document.createElement('button');
+        remove.setAttribute('class','kill');
+        remove.innerText = 'Remove Book';
+
+        let box = document.createElement('div');
+        box.setAttribute('class','buttHolder');
+        box.appendChild(toggle);
+        box.appendChild(remove);
+
+
+        book.appendChild(title);
+        book.appendChild(author);
+        book.appendChild(readeth);
+        book.appendChild(box);
+        return book;
+    }
+}
+
 const myLibrary = [new Book(0, 'Poetry in Motion', 'htcrazy', '69', true), new Book(1, 'The Count of Monte Cristo', 'Billy Bob', '420', false), 
     new Book(2, 'Solo Leveling King', 'Mishimoto', '69420', false), new Book(3, 'Wandering Inn', 'that one girl', '9001', true)];
 let bookNum = 4;
 refreshBookList();
-
-function Book(id, name, author, pages, read) {
-    this.id = id;
-    this.name = name;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
 
 const showForm = document.getElementById("add");
 showForm.addEventListener("click", () => {
@@ -31,8 +72,7 @@ function addBookToLibrary() {
         readed = true;
     }
     
-    let poo = new Book(id, nem, who, pages, readed);
-    myLibrary.push(poo);
+    myLibrary.push(new Book(id, nem, who, pages, readed));
     refreshBookList();
 
     document.getElementById('fillThis').reset();
@@ -47,43 +87,8 @@ function refreshBookList() {
 
     for (i in myLibrary) {
         if (myLibrary[i] != null) {
-            let book = document.createElement('div');
-            book.setAttribute('id',myLibrary[i].id);
-            book.setAttribute('class','card');
-
-            let title = document.createElement('p');
-            title.setAttribute('class','title');
-            title.innerText = myLibrary[i].name;
-
-            let author = document.createElement('p');
-            author.setAttribute('class','author');
-            author.innerText = 'by ' + myLibrary[i].author + ' (' + myLibrary[i].pages + ' pages)';
-
-            let readeth = document.createElement('p');
-            readeth.setAttribute('class','read');
-            if (myLibrary[i].read == true) {
-                readeth.innerText = 'You have read this book.';
-            } else {readeth.innerText = 'You have NOT read this book.';}
-
-            let toggle = document.createElement('button');
-            toggle.setAttribute('class','toggle');
-            toggle.innerText = 'Toggle: Read/Unread';
-
-            let remove = document.createElement('button');
-            remove.setAttribute('class','kill');
-            remove.innerText = 'Remove Book';
-
-            let box = document.createElement('div');
-            box.setAttribute('class','buttHolder');
-            box.appendChild(toggle);
-            box.appendChild(remove);
-
-
-            book.appendChild(title);
-            book.appendChild(author);
-            book.appendChild(readeth);
-            book.appendChild(box);
-            bookcase.appendChild(book);
+            const poo = myLibrary[i].makeBookDom();
+            bookcase.appendChild(poo);
         }
     }
     console.log(myLibrary)
